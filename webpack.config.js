@@ -5,11 +5,11 @@ const cssPlugin = require('mini-css-extract-plugin');
 
 module.export = {
     entry: {
-        name: "./src/js/main.js"
+        app: "./src/js/main.js"
     },
     output: {
-        filename: "[name]_app.js",
-        path: path.resolve('dist')
+        filename: "./[name]_app.js",
+        path: path.resolve(__dirname,'public')
     },
     module: {
         rules:[
@@ -36,7 +36,7 @@ module.export = {
                     {
                         loader: "html-loader",
                         options: {
-                            minimize: "true"
+                            minimize: true
                         }
                     }
                 ]
@@ -56,7 +56,7 @@ module.export = {
         ]
     },
     plugins: [
-        cleanP(['dis']),
+        new cleanP(['dis']),
         new htmlPlugin({
             template: "./src/index.html",
             filename: "./index.html"
