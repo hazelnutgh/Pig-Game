@@ -1,54 +1,54 @@
-const path = require('path');
 const htmlPlugin = require('html-webpack-plugin');
+const miniCss = require('mini-css-extract-plugin');
+const path = require('path');
 const cleanP = require('clean-webpack-plugin');
-const cssPlugin = require('mini-css-extract-plugin');
 
-module.export = {
+module.exports = {
     entry: {
-        app: "./src/js/main.js"
+        app: './src/JS/main.js'
     },
     output: {
-        filename: "./[name]_app.js",
-        path: path.resolve(__dirname,'public')
+        filename: './[name].js',
+        path: path.resolve(__dirname, 'public')
     },
     module: {
-        rules:[
+        rules: [
             {
                 test: /\.js$/,
-                use: ["babel-loader"]
+                use: ['babel-loader']
             },
             {
                 test: /\.scss$/,
                 use: [
-                    cssPlugin.loader,
-                    "css-loader",
+                    miniCss.loader,
+                    'css-loader',
                     {
-                        loader: "node-sass",
+                        loader: 'sass-loader',
                         options: {
-                            outputStyle: "compressed"
+                            outputStyle: 'compressed'
                         }
                     }
                 ]
             },
             {
-                test: /\.html$/,
+                test: /\.html/,
                 use: [
                     {
-                        loader: "html-loader",
+                        loader: 'html-loader',
                         options: {
                             minimize: true
                         }
-                    }
+                    }    
                 ]
             },
             {
                 test: /\.(png|svg)/,
                 use: [
                     {
-                        loader: "file-loader",
+                        loader: 'file-loader',
                         options: {
-                            name: "[name].[ext]",
-                            outputPath: "/imgz"
+                            name: '[name].[ext]',
+                            outputPath: '/imgz'
                         }
                     }
                 ]
@@ -56,14 +56,14 @@ module.export = {
         ]
     },
     plugins: [
-        new cleanP(['dis']),
+        new cleanP(['public']),
         new htmlPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
+            filename: './index.html',
+            template: './src/index.html'
         }),
-        new cssPlugin({
-            filename: "[name].css",
-            chunck: "[id].css"
+        new miniCss({
+            filename: 'styles.css',
+            chunkFilename: '[id].css'
         })
     ]
 }
