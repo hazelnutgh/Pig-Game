@@ -1,0 +1,21 @@
+.platform {
+    background-color: #fff;
+    border-radius: 10px;
+    height: 600px;
+    padding: 173px 0 0 0;
+
+    &__dice {
+        display: inline-block;
+        margin-bottom: 1.4em;
+        width: 142px;
+        height: 142px;
+        background: url('../imgz/dice-01.png') no-repeat;
+    }
+
+    &__score-heading {
+        margin-bottom: 1em;
+        font-weight: 400;
+        color: $siteRed;
+        font-size: 1.2em;
+    }
+}

@@ -1,0 +1,17 @@
+.score-plate {
+    display: inline-block;
+    border: 1px solid $siteGrey;
+    font-size: 3em;
+    border-radius: 10px;
+    color: $siteGrey;
+
+    &--white {
+        background-color: #fff;
+        padding: 1em 0.5em;
+    }
+
+    &--grey {
+        background-color: #d1d3d4;
+        padding: 0.5em 1em;
+    }
+}

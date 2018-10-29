@@ -1,0 +1,27 @@
+$columns: 8;
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+        /*border: 1px solid black;*/
+        padding-right: 20px;
+    }
+
+    &--set-height {
+        /*background-color: orange;*/ // Used to set the height for the content region
+        height: calc(100vh - 30px);
+    }
+
+    &--mid-section {
+        text-align: center;
+        padding: 40px 0 0 0;
+    }
+
+    @for $i from 1 through $columns {
+        &__col-#{$i} {
+            flex: 100% / $columns * $i;
+        }
+    }
+}
